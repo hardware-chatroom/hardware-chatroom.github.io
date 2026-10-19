@@ -1,0 +1,19 @@
+name: "晒一次折腾 / Share an experiment"
+description: "成功、失败和未完成的尝试都欢迎。 / Finished or unfinished, working or not."
+title: "[Experiment] "
+body:
+  - type: textarea
+    id: experiment
+    attributes:
+      label: "你在折腾什么？ / What are you exploring?"
+    validations:
+      required: true
+  - type: textarea
+    id: process
+    attributes:
+      label: "怎么尝试的？ / What did you try?"
+      description: "硬件、代码、接线、照片或复现步骤。 / Hardware, code, wiring, photos, or reproduction steps."
+  - type: textarea
+    id: learned
+    attributes:
+      label: "发现、踩坑与下一步 / Findings, wrong turns, and next steps"

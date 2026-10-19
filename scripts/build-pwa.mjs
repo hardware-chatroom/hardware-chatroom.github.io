@@ -3,7 +3,7 @@ import { join, relative, sep } from 'node:path';
 import { createHash } from 'node:crypto';
 
 const root = join(process.cwd(), 'out');
-const pages = ['', 'projects/', 'notes/', 'about/', 'join/', 'en/', 'en/projects/', 'en/notes/', 'en/about/', 'en/join/'];
+const pages = (await walk(root)).filter(file => file.endsWith(`${sep}index.html`)).map(file => relative(root, file).split(sep).join('/').replace(/index\.html$/, '')).filter(path => !path.startsWith('_') && path !== '404/');
 await writeFile(join(root, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + pages.map(path => `<url><loc>https://hardware-chatroom.github.io/${path}</loc></url>`).join('') + '</urlset>');
 async function walk(dir) { const entries = await readdir(dir, { withFileTypes: true }); return (await Promise.all(entries.map(entry => entry.isDirectory() ? walk(join(dir, entry.name)) : join(dir, entry.name)))).flat(); }
 const files = (await walk(root)).filter(file => !file.endsWith('.map') && !file.endsWith('sw.js')).sort();

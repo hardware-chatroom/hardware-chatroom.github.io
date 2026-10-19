@@ -1,0 +1,20 @@
+name: "聊个想法 / Bring an idea"
+description: "一个没想完整的点子，也欢迎。 / An unfinished thought is welcome."
+title: "[Idea] "
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: "想做什么？ / What's the idea?"
+      description: "为什么觉得有趣？希望验证什么？ / What makes you curious?"
+    validations:
+      required: true
+  - type: textarea
+    id: hardware
+    attributes:
+      label: "可能用到的硬件 / Hardware you have in mind"
+  - type: textarea
+    id: help
+    attributes:
+      label: "想找谁一起？ / How could others help?"
+      description: "想法、测试、代码、设计、记录，都可以。 / Ideas, testing, code, design, notes — all welcome."

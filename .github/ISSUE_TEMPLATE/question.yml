@@ -1,0 +1,21 @@
+name: "问个问题 / Ask a question"
+description: "一起找到下一条线索。 / Let's find the next clue."
+title: "[Question] "
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: "遇到了什么问题？ / What's happening?"
+      description: "期望是什么，实际观察到了什么？ / What did you expect and observe?"
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: "硬件与环境 / Hardware and environment"
+      description: "开发板、供电、软件版本等。 / Board, power supply, and software versions."
+  - type: textarea
+    id: tried
+    attributes:
+      label: "已经试过什么？ / What have you tried?"
+      description: "可以补充日志、照片和接线图。 / Logs, photos, and wiring diagrams can help."

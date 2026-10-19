@@ -7,19 +7,14 @@ export const propose = (title = "") => `${REPO}/issues/new?title=${encodeURIComp
 
 export const copy = {
   zh: {
-    lang: "zh-CN", name: "硬件唠嗑室", nav: ["项目", "实验笔记", "关于"],
+    lang: "zh-CN", name: "硬件唠嗑室", nav: ["工作台", "实验笔记", "关于"],
     skip: "跳到正文", menu: "打开导航", close: "关闭导航", join: "一起探索", more: "了解更多",
     kicker: "好奇心，接上电。", tagline: "聊聊硬件，动手做点好玩的。",
     intro: "一个开放、有趣、由好奇心驱动的硬件探索社区。",
     lead: "比起讨论一个东西有多厉害，我们更想亲手试试它究竟能做什么。",
     workbench: "工作台上", workbenchEn: "ON THE WORKBENCH", allProjects: "探索项目",
     workbenchIntro: "先从一个小问题开始。把想法接上线，让下一次实验发生。",
-    proposal: "实验提案", proposalNote: "以下是待发起的探索方向，欢迎把它变成第一个项目。",
-    ideas: [
-      { title: "给一个小屏幕，接上好奇心。", text: "从 ESP32 和 OLED 开始，试试让设备用自己的方式回应。", tag: "DIY & Prototyping", issue: "实验提案：ESP32 与小屏幕", art: "screen" },
-      { title: "拆开看看，还能怎么玩？", text: "一件电子玩具，一个没弄懂的问题。沿着电路，找到新的可能。", tag: "Hardware Hacking", issue: "实验提案：拆解与改造电子玩具", art: "circuit" },
-    ],
-    ideaAction: "聊聊这个想法", notes: "实验笔记", allNotes: "阅读笔记",
+    notes: "实验笔记", allNotes: "阅读笔记",
     noteTag: "社区笔记", noteTitle: "从一个问题开始，把过程留下来。",
     noteIntro: "关于我们为什么折腾硬件，以及那些还没跑通的尝试为什么也值得分享。",
     explore: "我们在探索", directions: [
@@ -58,12 +53,8 @@ export const copy = {
     intro: "An open, playful, curiosity-driven community for exploring hardware.",
     lead: "Rather than just talk about how impressive something is, we'd like to get our hands on it and see what it can actually do.",
     workbench: "On the workbench", workbenchEn: "IDEAS INTO EXPERIMENTS", allProjects: "Explore projects",
-    workbenchIntro: "Start with a small question. Wire up an idea. See what happens next.", proposal: "Experiment idea", proposalNote: "These ideas are waiting for someone to start exploring. Help turn one into our first project.",
-    ideas: [
-      { title: "A tiny screen. A little curiosity.", text: "Start with an ESP32 and an OLED. See how a device might respond in its own way.", tag: "DIY & Prototyping", issue: "Experiment idea: ESP32 and a tiny screen", art: "screen" },
-      { title: "Open it up. What else can it do?", text: "An electronic toy. An unanswered question. Follow the circuit to a new possibility.", tag: "Hardware Hacking", issue: "Experiment idea: electronic toy teardown", art: "circuit" },
-    ],
-    ideaAction: "Explore this idea", notes: "Field notes", allNotes: "Read the notes", noteTag: "Community note", noteTitle: "Start with a question. Leave a trail.", noteIntro: "Why we tinker with hardware, and why the attempts that don't work deserve a place here too.",
+    workbenchIntro: "Start with a small question. Wire up an idea. See what happens next.",
+    notes: "Field notes", allNotes: "Read the notes", noteTag: "Community note", noteTitle: "Start with a question. Leave a trail.", noteIntro: "Why we tinker with hardware, and why the attempts that don't work deserve a place here too.",
     explore: "What we're exploring", directions: [
       ["Hardware Hacking", "Device teardowns, protocol reverse engineering, firmware exploration, and hardware mods."],
       ["AI × Hardware", "Exploring how agents, voice interfaces, and smart devices connect with the physical world."],
