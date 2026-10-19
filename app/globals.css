@@ -139,6 +139,23 @@ h1,h2,h3,p,figure { margin:0; }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none!important; animation:none!important; } }
 
 /* Participation and content-driven workbench. */
+.explore-feed { margin-bottom:80px; }
+.explore-filters { display:flex; flex-wrap:wrap; gap:8px; padding-bottom:22px; border-bottom:1px solid var(--line); }
+.explore-filters button { padding:10px 20px; min-height:44px; font-size:13px; border-radius:24px; color:var(--muted); }
+.explore-filters button:hover { background:var(--soft); }
+.explore-filters button.selected { background:var(--ink); color:#fff; }
+.explore-empty { min-height:370px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:45px 20px; }
+.explore-empty-icon { display:grid; place-items:center; width:64px; height:64px; border-radius:50%; background:var(--soft); color:#627269; margin-bottom:24px; }
+.explore-empty h2 { font-size:24px; font-weight:550; letter-spacing:-.6px; line-height:1.5; }
+.explore-empty p { margin-top:14px; color:var(--muted); font-size:13px; line-height:1.9; max-width:460px; }
+.explore-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; padding-top:30px; }
+.explore-card { display:flex; flex-direction:column; align-items:flex-start; border:1px solid var(--line); border-radius:10px; padding:24px; }
+.explore-meta { display:flex; align-items:center; gap:12px; color:var(--muted); font-size:10px; }
+.explore-card h2 { margin-top:20px; font-size:23px; font-weight:550; letter-spacing:-.6px; line-height:1.5; }
+.explore-card p { color:var(--muted); margin:12px 0 20px; font-size:13px; line-height:1.9; flex:1; }
+.explore-card .text-link { margin-top:16px; }
+@media(max-width:850px) { .explore-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .explore-grid { grid-template-columns:1fr; gap:18px; } .explore-filters { gap:4px; } .explore-filters button { font-size:12px; padding:10px 16px; } .explore-empty { min-height:320px; padding-inline:12px; } .explore-empty h2 { font-size:21px; } .explore-feed { margin-bottom:45px; } }
 .nav-wrap { gap:22px; }
 .navigation { margin-left:auto; gap:24px; }
 .navigation .github-link { display:grid; place-items:center; min-width:36px; min-height:44px; padding:0; }

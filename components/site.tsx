@@ -8,12 +8,15 @@ import Onboarding from "./onboarding";
 import { onboarding, issueFor } from "@/lib/onboarding";
 import { getProjects } from "@/lib/projects";
 import { ProjectList } from "./projects";
+import ExploreFeed from "./explore";
+import { exploreCopy } from "@/lib/explore-copy";
+import { getExploreItems } from "@/lib/explore";
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#ffffff" };
 
 export function metadata(locale: Locale, section?: Section): Metadata {
   const c = copy[locale];
-  const label = section ? { projects: c.workbench, notes: c.notes, about: c.aboutLabel, join: onboarding[locale].join }[section] : "Talk about hardware. Build something fun.";
+  const label = section ? { explore: exploreCopy[locale].title, projects: c.workbench, notes: c.notes, about: c.aboutLabel, join: onboarding[locale].join }[section] : "Talk about hardware. Build something fun.";
   return {
     metadataBase: new URL(SITE), title: `${label} | Hardware Chatroom · 硬件唠嗑室`, description: c.intro,
     applicationName: "Hardware Chatroom", manifest: locale === "en" ? "/en/manifest.webmanifest" : "/manifest.webmanifest",
@@ -56,7 +59,7 @@ function HowToPlay({ locale }: { locale: Locale }) {
 export function Home({ locale }: { locale: Locale }) {
   const c = copy[locale];
   const projects = getProjects(locale);
-  return <main id="main" className="container"><section className="hero"><div className="hero-copy"><p className="hero-kicker"><span className="status-dot"/>{c.kicker}</p><h1>Talk about hardware.<br/>Build something fun.</h1>{locale === "zh" && <p className="hero-tagline">{c.tagline}</p>}<p className="hero-intro">{c.intro}</p><div className="hero-actions"><Link href={route(locale, "join")} className="button primary">{c.join}<Icon name="external" size={20}/></Link><a href={ORG} className="button quiet"><Icon name="github" size={20}/>GitHub<Icon name="external" size={16}/></a></div></div><figure className="hero-visual"><img src="/images/workbench.webp" alt={c.heroAlt} width="1440" height="960" fetchPriority="high"/><figcaption>{c.illustration}</figcaption></figure></section>
+  return <main id="main" className="container"><section className="hero"><div className="hero-copy"><p className="hero-kicker"><span className="status-dot"/>{c.kicker}</p><h1>Talk about hardware.<br/>Build something fun.</h1>{locale === "zh" && <p className="hero-tagline">{c.tagline}</p>}<p className="hero-intro">{c.intro}</p><div className="hero-actions"><Link href={route(locale, "explore")} className="button primary">{c.join}<Icon name="external" size={20}/></Link><a href={ORG} className="button quiet"><Icon name="github" size={20}/>GitHub<Icon name="external" size={16}/></a></div></div><figure className="hero-visual"><img src="/images/workbench.webp" alt={c.heroAlt} width="1440" height="960" fetchPriority="high"/><figcaption>{c.illustration}</figcaption></figure></section>
     <HowToPlay locale={locale}/>
     {projects.length > 0 && <section className="section workbench"><SectionHeading title={c.workbench} label={c.workbenchEn} href={route(locale, "projects")} action={c.allProjects}/><ProjectList locale={locale} projects={projects.slice(0, 4)}/></section>}
     <section className="section notes-section"><SectionHeading title={c.notes} label="KEEP A TRACE" href={route(locale, "notes")} action={c.allNotes}/><Link href={route(locale, "notes")} className="note-preview"><span className="note-type">01 / {c.noteTag}</span><div><h3>{c.noteTitle}</h3><p>{c.noteIntro}</p></div><span className="circle-arrow"><Icon name="arrow"/></span></Link></section>
@@ -67,6 +70,7 @@ export function Home({ locale }: { locale: Locale }) {
 
 export function SectionPage({ locale, section }: { locale: Locale; section: Section }) {
   const c = copy[locale];
+  if (section === "explore") return <main id="main" className="container inner-page"><div className="page-intro"><span className="eyebrow">FOLLOW YOUR CURIOSITY</span><h1>{exploreCopy[locale].title}</h1><p>{exploreCopy[locale].intro}</p></div><ExploreFeed locale={locale} items={getExploreItems(locale)}/></main>;
   if (section === "projects") {
     const projects = getProjects(locale); const guide = onboarding[locale];
     return <main id="main" className="container inner-page"><div className="page-intro"><span className="eyebrow">ON THE WORKBENCH</span><h1>{c.workbench}</h1>{projects.length > 0 && <p>{c.workbenchIntro}</p>}</div>{projects.length > 0 ? <ProjectList locale={locale} projects={projects}/> : <section className="empty-workbench"><Icon name="plus" size={28}/><h2>{guide.empty}</h2><p>{guide.emptyText}</p><Link href={route(locale, "join")} className="text-link">{guide.join}<Icon name="arrow" size={18}/></Link></section>}<Invite locale={locale}/></main>;

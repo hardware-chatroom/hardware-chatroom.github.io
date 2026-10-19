@@ -27,7 +27,7 @@ export default function Navbar({ locale, translatedSlugs }: { locale: Locale; tr
     <div className="nav-wrap container">
       <Link href={route(locale)} className="brand" aria-label="Hardware Chatroom · 硬件唠嗑室" onClick={() => setOpen(false)}><Mark size={34}/><span>Hardware Chatroom<span className="brand-cn">硬件唠嗑室</span></span></Link>
       <nav id="site-nav" className={`navigation ${open ? "is-open" : ""}`} aria-label={locale === "zh" ? "主导航" : "Main navigation"}>
-        {["projects", "notes", "about"].map((path, i) => <Link key={path} href={route(locale, path)} className={localPath === path ? "active" : ""} aria-current={localPath === path ? "page" : undefined} onClick={() => setOpen(false)}>{c.nav[i]}</Link>)}
+        {["explore", "notes", "about"].map((path, i) => <Link key={path} href={route(locale, path)} className={localPath === path ? "active" : ""} aria-current={localPath === path ? "page" : undefined} onClick={() => setOpen(false)}>{c.nav[i]}</Link>)}
         <span className="nav-divider"/>
         <Link href={route(other, languagePath)} hrefLang={copy[other].lang} lang={copy[other].lang} onClick={() => setOpen(false)} className="language-link">{locale === "zh" ? "EN" : "中文"}<span className="sr-only">{locale === "zh" ? " — Switch to English" : " — 切换到中文"}</span></Link>
         <a href={ORG} className="github-link" aria-label={locale === "zh" ? "GitHub 社区" : "GitHub community"} title={locale === "zh" ? "GitHub 社区" : "GitHub community"}><Icon name="github" size={20}/></a>

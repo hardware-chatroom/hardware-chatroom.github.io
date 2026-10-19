@@ -27,10 +27,11 @@ Visit http://127.0.0.1:4173. The production preview includes service-worker regi
 
 ## Pages and content
 
-- Chinese: `/`, `/projects/`, `/notes/`, `/about/`, `/join/`.
+- Chinese: `/`, `/explore/`, `/projects/`, `/notes/`, `/about/`, `/join/`.
 - English: `/en/` and matching subpages. Language links preserve the current page.
 - `lib/content.ts`: paired English/Chinese copy and the first community note.
 - `content/projects/<slug>/zh.md` and `en.md`: published project articles, automatically discovered at build time.
+- `content/explore/zh.json` and `en.json`: optional published article links, events, and livestream/replay entries. See [the feed guide](content/explore/README.md).
 - `lib/projects.ts`: Markdown/frontmatter reader, publication checks, and ordering.
 - `lib/onboarding.ts`, `components/onboarding.tsx`: the bilingual three-step introduction and participation paths.
 - `components/site.tsx`: page composition and metadata.
@@ -43,7 +44,9 @@ The About page preserves the approved organization introduction. Keep its Chines
 
 To publish a project, follow [the content guide](content/projects/README.md). Create a folder with a `zh.md` and/or `en.md` file, include its title, summary, quoted date, and `draft: false`, then commit/push. A rebuild automatically publishes it. Drafts and absent translations remain hidden. New GitHub issues do not automatically become website articles; select and write up the material first.
 
-The Join us page explains the public GitHub workflow without requiring organization membership. Four paths (idea, question, helping, and sharing) lead through a short guide to a relevant issue template or existing projects. With no published projects, the helping path explicitly offers starting an idea instead. Website buttons open GitHub; they never submit a post on a visitor's behalf. Issue forms live in `.github/ISSUE_TEMPLATE/`.
+The landing page's **Come explore / 一起探索** button opens `/explore/` immediately. This content homepage shows all available articles, events, and livestreams by default, with optional category filters. It is independent of participation onboarding and has no prerequisite choices. Published project articles are included automatically. Empty categories show honest empty states.
+
+The navigation's **Join us / 加入我们** button opens `/join/`, which explains the public GitHub workflow without requiring organization membership. Four paths (idea, question, helping, and sharing) lead through a short guide to a relevant issue template or existing projects. With no published projects, the helping path explicitly offers starting an idea instead. The skip link returns to Explore. Website buttons open GitHub; they never submit a post on a visitor's behalf. Issue forms live in `.github/ISSUE_TEMPLATE/`.
 
 ## PWA
 
@@ -67,7 +70,7 @@ The original conversation-and-circuit logo is in `public/brand/logo.svg`. See [b
 ## Validation checklist
 
 - Production build and TypeScript check.
-- Both languages and all 10 page routes.
+- Both languages and all core page routes.
 - Desktop/tablet/mobile widths, including 320px, without horizontal overflow.
 - Keyboard navigation, Escape dismissal, language switching, missing images.
 - Manifest, icons, service-worker control, offline navigation/fallback, and waiting-worker updates.

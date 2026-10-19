@@ -15,7 +15,7 @@
     { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "shortcuts": [
-    { "name": "工作台 / Workbench", "url": "/projects/", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "一起探索 / Explore", "url": "/explore/", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
     { "name": "实验笔记 / Field notes", "url": "/notes/", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
     { "name": "English", "url": "/en/", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
   ]

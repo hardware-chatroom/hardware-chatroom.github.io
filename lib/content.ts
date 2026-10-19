@@ -7,7 +7,7 @@ export const propose = (title = "") => `${REPO}/issues/new?title=${encodeURIComp
 
 export const copy = {
   zh: {
-    lang: "zh-CN", name: "硬件唠嗑室", nav: ["工作台", "实验笔记", "关于"],
+    lang: "zh-CN", name: "硬件唠嗑室", nav: ["探索", "实验笔记", "关于"],
     skip: "跳到正文", menu: "打开导航", close: "关闭导航", join: "一起探索", more: "了解更多",
     kicker: "好奇心，接上电。", tagline: "聊聊硬件，动手做点好玩的。",
     intro: "一个开放、有趣、由好奇心驱动的硬件探索社区。",
@@ -47,7 +47,7 @@ export const copy = {
     heroAlt: "白色面包板上的开发板、小屏幕和按钮，屏幕显示像素笑脸", illustration: "硬件概念配图", logoLabel: "对话与电路", brandTitle: "一个符号，两种好奇。", brandDescription: "对话气泡容纳想法，电路触点把讨论接向动手实践。图标与网站、应用图标共用一套设计。", downloadLogo: "下载矢量 Logo", notFound: "这条线路还没接上。", backHome: "回到工作台",
   },
   en: {
-    lang: "en", name: "Hardware Chatroom", nav: ["Projects", "Field notes", "About"],
+    lang: "en", name: "Hardware Chatroom", nav: ["Explore", "Field notes", "About"],
     skip: "Skip to content", menu: "Open navigation", close: "Close navigation", join: "Come explore", more: "Learn more",
     kicker: "Curiosity, plugged in.", tagline: "聊聊硬件，动手做点好玩的。",
     intro: "An open, playful, curiosity-driven community for exploring hardware.",
@@ -85,5 +85,5 @@ export const copy = {
   },
 };
 
-export type Section = "projects" | "notes" | "about" | "join";
-export const sections: Section[] = ["projects", "notes", "about", "join"];
+export type Section = "explore" | "projects" | "notes" | "about" | "join";
+export const sections: Section[] = ["explore", "projects", "notes", "about", "join"];

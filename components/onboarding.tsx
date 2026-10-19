@@ -47,6 +47,6 @@ export default function Onboarding({ locale, hasProjects }: { locale: Locale; ha
       {offline && <p role="status" className="onboarding-offline">{c.needNetwork}</p>}
       <div className="onboarding-controls">{step > 0 && <button className="text-link" onClick={() => setStep(step - 1)}><Icon name="arrow" size={17} style={{ transform: "rotate(180deg)" }}/>{c.back}</button>}{step === 1 && <button className="button primary" onClick={() => setStep(2)}>{c.next}<Icon name="arrow" size={18}/></button>}{step === 2 && <button className="text-link" onClick={() => setStep(0)}>{c.finish}</button>}</div>
     </div>
-    <Link href={route(locale, hasProjects ? "projects" : "")} className="onboarding-skip text-link">{c.skip}<Icon name="arrow" size={17}/></Link>
+    <Link href={route(locale, "explore")} className="onboarding-skip text-link">{c.skip}<Icon name="arrow" size={17}/></Link>
   </section>;
 }
