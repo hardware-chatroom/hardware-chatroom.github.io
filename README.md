@@ -1,40 +1,69 @@
-# Hardware Chat Room
+# Hardware Chatroom · 硬件唠嗑室
 
-A Open chat room.
+**Talk about hardware. Build something fun.**
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+The bilingual, responsive website for Hardware Chatroom. Built with Next.js, exported as static files, and hosted on GitHub Pages.
 
-## Getting Started
+硬件唠嗑室的中英双语官网：白色工作台风格、响应式页面、可安装 PWA、完整静态导出。
 
-First, run the development server:
+## Develop
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+Use Node.js 24 and pnpm 10 or later.
+
+```sh
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Production preview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+pnpm build
+pnpm typecheck
+pnpm preview
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Visit http://127.0.0.1:4173. The production preview includes service-worker registration; development mode deliberately does not register a worker.
 
-## Learn More
+## Pages and content
 
-To learn more about Next.js, take a look at the following resources:
+- Chinese: `/`, `/projects/`, `/notes/`, `/about/`, `/join/`.
+- English: `/en/` and matching subpages. Language links preserve the current page.
+- `lib/content.ts`: paired English/Chinese copy, experiment proposals, and the first community note.
+- `components/site.tsx`: page composition and metadata.
+- `components/navbar.tsx`, `components/pwa.tsx`: navigation and installation/update interactions.
+- `app/globals.css`: responsive design, safe-area handling, reduced-motion support.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The two workbench cards are **experiment proposals**, not claims of completed or active community projects. They link to prefilled GitHub issues so visitors can start a real experiment. The first field note explains the community's approach; it does not report a fabricated experiment. Replace proposals with verified project material as it becomes available.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The About page preserves the approved organization introduction. Keep its Chinese and English copy aligned with the organization profile in `hardware-chatroom/.github`.
 
-## Deploy on Vercel
+For future experiments, start with [the project template](docs/project-template.md). For a larger archive, move articles into a Markdown content collection and generate static routes at build time; the initial site keeps its small amount of content together.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## PWA
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Language-specific manifests retain one app identity, with a start URL matching the installation language.
+- Standalone window, 192/512px app icons, maskable icon, and Apple touch icon.
+- A small footer entry opens installation guidance; compatible browsers offer the native install prompt. Safari/iOS displays Add to Home Screen instructions.
+- The post-build script fingerprints the complete static export and precaches both languages and local assets. Navigation uses the network with an offline fallback; static assets are cached locally.
+- Updates wait until a visitor presses Update. Offline pages remain available after the first successful service-worker installation.
+- External GitHub links require a network connection. Browser and OS installation capabilities differ.
+
+PWA behavior needs HTTPS in production or localhost during development. There is no backend, tracking, login, push service, or runtime GitHub API dependency.
+
+## GitHub Pages
+
+`.github/workflows/pages.yml` validates pull requests and builds/deploys `main` using GitHub Actions. Set repository **Settings → Pages → Source → GitHub Actions** for this workflow. The exported `out/` directory includes `.nojekyll`, `sitemap.xml`, and the generated service worker. Node server features are not used.
+
+## Brand and assets
+
+The original conversation-and-circuit logo is in `public/brand/logo.svg`. See [brand notes](docs/brand.md). The generated concept photograph in `public/images/workbench.webp` illustrates hardware exploration and is not a photograph of a completed community project. Its generation brief is recorded in [asset notes](docs/assets.md).
+
+## Validation checklist
+
+- Production build and TypeScript check.
+- Both languages and all 10 page routes.
+- Desktop/tablet/mobile widths, including 320px, without horizontal overflow.
+- Keyboard navigation, Escape dismissal, language switching, missing images.
+- Manifest, icons, service-worker control, offline navigation/fallback, and waiting-worker updates.
+- Final deployment status and live asset responses.
